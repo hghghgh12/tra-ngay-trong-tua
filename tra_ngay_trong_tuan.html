@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tra ngày trong tuần</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    input[type="date"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    button {
+      margin-left: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 0.5rem;
+    }
+    #result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Tra ngày trong tuần</h2>
+    <input type="date" id="dateInput">
+    <button onclick="checkDay()">Xem thứ</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const weekdays = [
+      "Chủ nhật",
+      "Thứ hai",
+      "Thứ ba",
+      "Thứ tư",
+      "Thứ năm",
+      "Thứ sáu",
+      "Thứ bảy"
+    ];
+
+    function checkDay() {
+      const input = document.getElementById("dateInput").value;
+      if (!input) {
+        document.getElementById("result").textContent = "Vui lòng chọn ngày.";
+        return;
+      }
+      const date = new Date(input);
+      const day = date.getDay();
+      document.getElementById("result").textContent = `Ngày ${input.split('-').reverse().join('/')} là ${weekdays[day]}`;
+    }
+  </script>
+</body>
+</html>
